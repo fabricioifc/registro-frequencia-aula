@@ -1,262 +1,263 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela do Professor</title>
-    <link rel="stylesheet" href="/styles.css">
-    <style>
-        .action-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tela do Professor</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .action-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
 
-        .aluno-item {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 10px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
+    .aluno-item {
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
 
-        .aluno-item:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-        }
+    .aluno-item:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-        .aluno-nome {
-            font-weight: 600;
-            color: #2c3e50;
-            flex: 1;
-            min-width: 150px;
-        }
+    .aluno-nome {
+      font-weight: 600;
+      color: #2c3e50;
+      flex: 1;
+      min-width: 150px;
+    }
 
-        .aluno-status {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            min-width: 100px;
-            text-align: center;
-        }
+    .aluno-status {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      min-width: 100px;
+      text-align: center;
+    }
 
-        .aluno-status.presente {
-            background-color: #d5f4e6;
-            color: #27ae60;
-        }
+    .aluno-status.presente {
+      background-color: #d5f4e6;
+      color: #27ae60;
+    }
 
-        .aluno-status.ausente {
-            background-color: #fadbd8;
-            color: #e74c3c;
-        }
+    .aluno-status.ausente {
+      background-color: #fadbd8;
+      color: #e74c3c;
+    }
 
-        .aluno-status.nao-marcado {
-            background-color: #fef5e7;
-            color: #f39c12;
-        }
+    .aluno-status.nao-marcado {
+      background-color: #fef5e7;
+      color: #f39c12;
+    }
 
-        .aluno-buttons {
-            display: flex;
-            gap: 8px;
-        }
+    .aluno-buttons {
+      display: flex;
+      gap: 8px;
+    }
 
-        .btn-small {
-            padding: 8px 14px;
-            font-size: 12px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
+    .btn-small {
+      padding: 8px 14px;
+      font-size: 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
 
-        .btn-small.presente {
-            background-color: #27ae60;
-            color: white;
-        }
+    .btn-small.presente {
+      background-color: #27ae60;
+      color: white;
+    }
 
-        .btn-small.presente:hover {
-            background-color: #229954;
-        }
+    .btn-small.presente:hover {
+      background-color: #229954;
+    }
 
-        .btn-small.ausente {
-            background-color: #e74c3c;
-            color: white;
-        }
+    .btn-small.ausente {
+      background-color: #e74c3c;
+      color: white;
+    }
 
-        .btn-small.ausente:hover {
-            background-color: #c0392b;
-        }
+    .btn-small.ausente:hover {
+      background-color: #c0392b;
+    }
 
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #95a5a6;
-        }
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #95a5a6;
+    }
 
-        .empty-state h3 {
-            color: #7f8c8d;
-            border: none;
-            margin-bottom: 10px;
-        }
+    .empty-state h3 {
+      color: #7f8c8d;
+      border: none;
+      margin-bottom: 10px;
+    }
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
 
-        .stat-card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #3498db;
-        }
+    .stat-card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-left: 4px solid #3498db;
+    }
 
-        .stat-number {
-            font-size: 28px;
-            font-weight: 700;
-            color: #3498db;
-            margin-bottom: 5px;
-        }
+    .stat-number {
+      font-size: 28px;
+      font-weight: 700;
+      color: #3498db;
+      margin-bottom: 5px;
+    }
 
-        .stat-label {
-            font-size: 12px;
-            color: #7f8c8d;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
+    .stat-label {
+      font-size: 12px;
+      color: #7f8c8d;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
 
-        @media (max-width: 768px) {
-            .aluno-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+    @media (max-width: 768px) {
+      .aluno-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-            .aluno-buttons {
-                width: 100%;
-            }
+      .aluno-buttons {
+        width: 100%;
+      }
 
-            .aluno-buttons button {
-                flex: 1;
-            }
-        }
-    </style>
+      .aluno-buttons button {
+        flex: 1;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <div class="container">
-            <h1>👨‍🏫 Tela do Professor</h1>
-            <p>Marque a frequência dos alunos em tempo real</p>
+  <header>
+    <div class="container">
+      <h1>👨‍🏫 Tela do Professor</h1>
+      <p>Marque a frequência dos alunos em tempo real</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/professor" style="background-color: #3498db; color: white;">Professor</a></li>
+      <li><a href="/coordenacao-ws">Coordenação (WS)</a></li>
+      <li><a href="/aulas">Aulas</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section>
+      <h2>Ações Rápidas</h2>
+      <div class="action-section">
+        <button class="btn btn-success" onclick="novaAula()">✔️ Criar Aula de Hoje</button>
+        <button class="btn btn-primary" onclick="marcarTodos()">👥 Marcar Todos Presentes</button>
+        <button class="btn btn-danger" onclick="removerAula()">🗑️ Remover Aula de Hoje</button>
+      </div>
+
+      <div class="stats" id="stats" style="display: none;">
+        <div class="stat-card">
+          <div class="stat-number" id="total">0</div>
+          <div class="stat-label">Total de Alunos</div>
         </div>
-    </header>
+        <div class="stat-card" style="border-left-color: #27ae60;">
+          <div class="stat-number" id="presentes" style="color: #27ae60;">0</div>
+          <div class="stat-label">Presentes</div>
+        </div>
+        <div class="stat-card" style="border-left-color: #e74c3c;">
+          <div class="stat-number" id="ausentes" style="color: #e74c3c;">0</div>
+          <div class="stat-label">Ausentes</div>
+        </div>
+        <div class="stat-card" style="border-left-color: #f39c12;">
+          <div class="stat-number" id="nao-marcados" style="color: #f39c12;">0</div>
+          <div class="stat-label">Não Marcados</div>
+        </div>
+      </div>
+    </section>
 
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/professor" style="background-color: #3498db; color: white;">Professor</a></li>
-            <li><a href="/coordenacao-ws">Coordenação (WS)</a></li>
-            <li><a href="/aulas">Aulas</a></li>
-        </ul>
-    </nav>
+    <section>
+      <h2>Registro de Presença</h2>
+      <div id="lista"></div>
+    </section>
+  </main>
 
-    <main class="container">
-        <section>
-            <h2>Ações Rápidas</h2>
-            <div class="action-section">
-                <button class="btn btn-success" onclick="novaAula()">✔️ Criar Aula de Hoje</button>
-                <button class="btn btn-primary" onclick="marcarTodos()">👥 Marcar Todos Presentes</button>
-                <button class="btn btn-danger" onclick="removerAula()">🗑️ Remover Aula de Hoje</button>
-            </div>
+  <footer>
+    <p><strong>Registro de Frequência</strong> | Tela do Professor</p>
+    <p>© 2026 - Sistema de Gerenciamento de Frequências</p>
+  </footer>
 
-            <div class="stats" id="stats" style="display: none;">
-                <div class="stat-card">
-                    <div class="stat-number" id="total">0</div>
-                    <div class="stat-label">Total de Alunos</div>
-                </div>
-                <div class="stat-card" style="border-left-color: #27ae60;">
-                    <div class="stat-number" id="presentes" style="color: #27ae60;">0</div>
-                    <div class="stat-label">Presentes</div>
-                </div>
-                <div class="stat-card" style="border-left-color: #e74c3c;">
-                    <div class="stat-number" id="ausentes" style="color: #e74c3c;">0</div>
-                    <div class="stat-label">Ausentes</div>
-                </div>
-                <div class="stat-card" style="border-left-color: #f39c12;">
-                    <div class="stat-number" id="nao-marcados" style="color: #f39c12;">0</div>
-                    <div class="stat-label">Não Marcados</div>
-                </div>
-            </div>
-        </section>
+  <script>
+    async function carregar() {
+      const res = await fetch("/diario");
+      const diario = await res.json();
 
-        <section>
-            <h2>Registro de Presença</h2>
-            <div id="lista"></div>
-        </section>
-    </main>
+      const dataHoje = new Date().toISOString().split("T")[0];
+      const aula = diario.aulas?.find(a => a.data === dataHoje);
 
-    <footer>
-        <p><strong>Registro de Frequência</strong> | Tela do Professor</p>
-        <p>© 2026 - Sistema de Gerenciamento de Frequências</p>
-    </footer>
+      const lista = document.getElementById("lista");
+      const statsSection = document.getElementById("stats");
+      lista.innerHTML = "";
 
-    <script>
-      async function carregar() {
-        const res = await fetch("/diario");
-        const diario = await res.json();
-
-        const dataHoje = new Date().toISOString().split("T")[0];
-        const aula = diario.aulas?.find(a => a.data === dataHoje);
-
-        const lista = document.getElementById("lista");
-        const statsSection = document.getElementById("stats");
-        lista.innerHTML = "";
-
-        if (!aula) {
-          lista.innerHTML = `
+      if (!aula) {
+        lista.innerHTML = `
             <div class="empty-state">
               <h3>📭 Nenhuma aula criada hoje</h3>
               <p>Clique no botão "Criar Aula de Hoje" para começar.</p>
             </div>
           `;
-          statsSection.style.display = "none";
-          return;
+        statsSection.style.display = "none";
+        return;
+      }
+
+      let presentes = 0;
+      let ausentes = 0;
+      let naoMarcados = 0;
+
+      diario.alunos.forEach(aluno => {
+        const statusValue = aula.presencas[aluno.matricula] || null;
+        let status = "Não marcado";
+        let statusClass = "nao-marcado";
+
+        if (statusValue === "Presente") {
+          status = "✓ Presente";
+          statusClass = "presente";
+          presentes++;
+        } else if (statusValue === "Ausente") {
+          status = "✗ Ausente";
+          statusClass = "ausente";
+          ausentes++;
+        } else {
+          naoMarcados++;
         }
 
-        let presentes = 0;
-        let ausentes = 0;
-        let naoMarcados = 0;
-
-        diario.alunos.forEach(aluno => {
-          const statusValue = aula.presencas[aluno.matricula] || null;
-          let status = "Não marcado";
-          let statusClass = "nao-marcado";
-
-          if (statusValue === "Presente") {
-            status = "✓ Presente";
-            statusClass = "presente";
-            presentes++;
-          } else if (statusValue === "Ausente") {
-            status = "✗ Ausente";
-            statusClass = "ausente";
-            ausentes++;
-          } else {
-            naoMarcados++;
-          }
-
-          lista.innerHTML += `
+        lista.innerHTML += `
             <div class="aluno-item">
               <div class="aluno-nome">${aluno.nome}</div>
               <span class="aluno-status ${statusClass}">${status}</span>
@@ -266,63 +267,64 @@
               </div>
             </div>
           `;
-        });
+      });
 
-        document.getElementById("total").textContent = diario.alunos.length;
-        document.getElementById("presentes").textContent = presentes;
-        document.getElementById("ausentes").textContent = ausentes;
-        document.getElementById("nao-marcados").textContent = naoMarcados;
-        statsSection.style.display = "grid";
+      document.getElementById("total").textContent = diario.alunos.length;
+      document.getElementById("presentes").textContent = presentes;
+      document.getElementById("ausentes").textContent = ausentes;
+      document.getElementById("nao-marcados").textContent = naoMarcados;
+      statsSection.style.display = "grid";
+    }
+
+    async function novaAula() {
+      const res = await fetch("/nova-aula", { method: "POST" });
+      if (res.ok) {
+        carregar();
+      } else {
+        alert("Erro ao criar aula");
       }
+    }
 
-      async function novaAula() {
-        const res = await fetch("/nova-aula", { method: "POST" });
-        if (res.ok) {
-          carregar();
-        } else {
-          alert("Erro ao criar aula");
-        }
+    async function removerAula() {
+      if (!confirm("Tem certeza que deseja remover a aula de hoje?")) return;
+      const data = new Date().toISOString().split("T")[0];
+      const res = await fetch("/aula/" + data, { method: "DELETE" });
+      if (res.ok) {
+        carregar();
+      } else {
+        alert("Erro ao remover aula");
       }
+    }
 
-      async function removerAula() {
-        if (!confirm("Tem certeza que deseja remover a aula de hoje?")) return;
-        const data = new Date().toISOString().split("T")[0];
-        const res = await fetch("/aula/" + data, { method: "DELETE" });
-        if (res.ok) {
-          carregar();
-        } else {
-          alert("Erro ao remover aula");
-        }
+    async function marcar(matricula, status) {
+      const res = await fetch("/marcar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ matricula, status })
+      });
+      if (res.ok) {
+        carregar();
+      } else {
+        alert("Erro ao marcar presença");
       }
+    }
 
-      async function marcar(matricula, status) {
-        const res = await fetch("/marcar", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ matricula, status })
-        });
-        if (res.ok) {
-          carregar();
-        } else {
-          alert("Erro ao marcar presença");
-        }
+    async function marcarTodos() {
+      const data = new Date().toISOString().split("T")[0];
+      const res = await fetch("/marcar-todos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data, status: "Presente" })
+      });
+      if (res.ok) {
+        carregar();
+      } else {
+        alert("Erro ao marcar todos");
       }
+    }
 
-      async function marcarTodos() {
-        const data = new Date().toISOString().split("T")[0];
-        const res = await fetch("/marcar-todos", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ data, status: "Presente" })
-        });
-        if (res.ok) {
-          carregar();
-        } else {
-          alert("Erro ao marcar todos");
-        }
-      }
+    window.addEventListener("load", carregar);
+  </script>
+</body>
 
-      window.addEventListener("load", carregar);
-    </script>
-  </body>
 </html>

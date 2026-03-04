@@ -83,7 +83,6 @@ nav a {
 nav a:hover {
     background-color: var(--secondary-color);
     color: white;
-    transform: translateY(-2px);
 }
 
 /* ========== Main Content ========== */
@@ -137,7 +136,6 @@ button, .btn {
 .btn-primary:hover, button:hover {
     background-color: #2980b9;
     box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
 }
 
 .btn-success {
@@ -236,7 +234,6 @@ tbody tr:nth-child(even) {
 }
 
 .card:hover {
-    transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
 }
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +19,6 @@
 
         .aula-item:hover {
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transform: translateX(5px);
         }
 
         .aula-header {
@@ -108,8 +108,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .empty-state {
@@ -146,6 +151,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -191,7 +197,7 @@
         async function atualizarDados() {
             const loading = document.getElementById('loading');
             const content = document.getElementById('content');
-            
+
             loading.style.display = 'block';
             content.innerHTML = '';
 
@@ -212,7 +218,7 @@
                 }
 
                 // Ordenar aulas por data decrescente
-                const aulasOrdenadas = [...dados.aulas].sort((a, b) => 
+                const aulasOrdenadas = [...dados.aulas].sort((a, b) =>
                     new Date(b.data) - new Date(a.data)
                 );
 
@@ -307,9 +313,7 @@
 
         // Carregar aulas ao abrir a página
         window.addEventListener('load', atualizarDados);
-
-        // Atualizar a cada 5 segundos
-        setInterval(atualizarDados, 5000);
     </script>
 </body>
+
 </html>

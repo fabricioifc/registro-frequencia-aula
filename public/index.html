@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,7 +53,6 @@
         }
 
         .feature-card:hover {
-            transform: translateY(-8px);
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
         }
 
@@ -86,7 +86,6 @@
 
         .feature-card a:hover {
             background-color: #2980b9;
-            transform: scale(1.05);
         }
 
         .info-section {
@@ -157,6 +156,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -166,15 +166,6 @@
     </header>
 
     <main class="container">
-        <section class="hero">
-            <h1>Bem-vindo ao Sistema</h1>
-            <p>Gerencie frequências de aula com múltiplas tecnologias de comunicação em tempo real</p>
-            <div class="hero-buttons">
-                <a href="/professor" class="btn btn-primary">👨‍🏫 Ir para Professor</a>
-                <a href="/coordenacao-ws" class="btn btn-success">🔗 Coordenação (WebSocket)</a>
-                <a href="/diario" class="btn btn-warning">📋 Ver Diário</a>
-            </div>
-        </section>
 
         <section class="features">
             <div class="feature-card" onclick="window.location.href='/professor'">
@@ -255,30 +246,37 @@
 
         <section>
             <h2>Funcionalidades Principais</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
                 <div class="card">
                     <div class="card-header">✅ Criar Aula</div>
-                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Inicie uma nova aula para o dia atual com um clique.</p>
+                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Inicie uma nova aula para o dia atual com um
+                        clique.</p>
                 </div>
                 <div class="card">
                     <div class="card-header">👥 Marcar Presença</div>
-                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Registre presença individual ou em massa dos alunos.</p>
+                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Registre presença individual ou em massa dos
+                        alunos.</p>
                 </div>
                 <div class="card">
                     <div class="card-header">📡 Sincronização</div>
-                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Atualização automática em tempo real para todos os clientes.</p>
+                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Atualização automática em tempo real para
+                        todos os clientes.</p>
                 </div>
                 <div class="card">
                     <div class="card-header">📊 Relatórios</div>
-                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Visualize histórico completo de aulas e frequências.</p>
+                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Visualize histórico completo de aulas e
+                        frequências.</p>
                 </div>
                 <div class="card">
                     <div class="card-header">🔐 Persistência</div>
-                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Todos os dados são salvos permanentemente no servidor.</p>
+                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Todos os dados são salvos permanentemente no
+                        servidor.</p>
                 </div>
                 <div class="card">
                     <div class="card-header">📱 Mobile Ready</div>
-                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Funciona perfeitamente em smartphones e tablets.</p>
+                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Funciona perfeitamente em smartphones e
+                        tablets.</p>
                 </div>
             </div>
         </section>
@@ -300,7 +298,8 @@
 
     <footer>
         <p><strong>Registro de Frequência</strong> | Sistema de Gerenciamento de Aulas</p>
-        <p>© 2026 - Desenvolvido com ❤️ usando Node.js e Express</p>
+        <p>© 2026 - Todos os direitos reservados.</p>
     </footer>
 </body>
+
 </html>
