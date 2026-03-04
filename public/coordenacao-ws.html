@@ -1,6 +1,112 @@
-<h2>Coordenação - WebSocket</h2>
+<h2>
+    Coordenação - WebSocket
+    <span id="status">🔴</span>
+</h2>
+
+<button id="btnConectar">Conectar</button>
+<button id="btnDesconectar" disabled>Desconectar</button>
+
 <ul id="lista"></ul>
 
 <script>
-    // implementar a lógica 
+    const statusSpan = document.getElementById("status");
+    const lista = document.getElementById("lista");
+    const btnConectar = document.getElementById("btnConectar");
+    const btnDesconectar = document.getElementById("btnDesconectar");
+
+    let socket = null;
+
+    // -------------------------
+    // CONECTAR
+    // -------------------------
+    function conectar() {
+        if (socket && socket.readyState === WebSocket.OPEN) {
+            console.log("Já está conectado.");
+            return;
+        }
+
+        socket = new WebSocket("ws://localhost:3000");
+
+        socket.addEventListener("open", () => {
+            atualizarStatus("🟢", "Conectado");
+            btnConectar.disabled = true;
+            btnDesconectar.disabled = false;
+            console.log("WebSocket conectado");
+        });
+
+        socket.addEventListener("message", (event) => {
+            try {
+                console.log(event);
+                const diario = JSON.parse(event.data);
+                render(diario);
+            } catch (erro) {
+                console.error("Erro ao processar mensagem:", erro);
+            }
+        });
+
+        socket.addEventListener("close", () => {
+            atualizarStatus("🔴", "Desconectado");
+            btnConectar.disabled = false;
+            btnDesconectar.disabled = true;
+            console.log("WebSocket desconectado");
+        });
+
+        socket.addEventListener("error", (erro) => {
+            console.error("Erro no WebSocket:", erro);
+        });
+    }
+
+    // -------------------------
+    // DESCONECTAR
+    // -------------------------
+    function desconectar() {
+        if (socket && socket.readyState === WebSocket.OPEN) {
+            socket.close(1000, "Encerrado pelo cliente");
+        }
+    }
+
+    btnConectar.addEventListener("click", conectar);
+    btnDesconectar.addEventListener("click", desconectar);
+
+    // -------------------------
+    // FUNÇÕES AUXILIARES
+    // -------------------------
+
+    function atualizarStatus(icone, texto) {
+        statusSpan.textContent = icone;
+        statusSpan.title = texto;
+    }
+
+    function render(diario) {
+        lista.innerHTML = "";
+
+        if (!diario?.aulas || !diario?.alunos) {
+            mostrarMensagem("Dados inválidos recebidos.");
+            return;
+        }
+
+        const dataHoje = new Date().toISOString().split("T")[0];
+        const aulaHoje = diario.aulas.find(a => a.data === dataHoje);
+
+        if (!aulaHoje) {
+            return;
+        }
+
+        const fragment = document.createDocumentFragment();
+
+        diario.alunos.forEach(aluno => {
+            const li = document.createElement("li");
+            const status = aulaHoje.presencas?.[aluno.matricula] || "Não marcado";
+            li.textContent = `${aluno.nome} - ${status}`;
+            fragment.appendChild(li);
+        });
+
+        lista.appendChild(fragment);
+    }
+
+    function mostrarMensagem(texto) {
+        const li = document.createElement("li");
+        li.textContent = texto;
+        lista.appendChild(li);
+    }
 </script>
