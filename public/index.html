@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Frequência - Home</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            border: none;
+        }
+
+        .feature-card p {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card a {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .feature-card a:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .info-section {
+            background-color: #ecf0f1;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .info-section h2 {
+            color: #2c3e50;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .info-item {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+
+        .info-item strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .info-item p {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons a {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>📚 Registro de Frequência</h1>
+            <p>Sistema integrado com WebSocket, Long Polling e Pooling</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Bem-vindo ao Sistema</h1>
+            <p>Gerencie frequências de aula com múltiplas tecnologias de comunicação em tempo real</p>
+            <div class="hero-buttons">
+                <a href="/professor" class="btn btn-primary">👨‍🏫 Ir para Professor</a>
+                <a href="/coordenacao-ws" class="btn btn-success">🔗 Coordenação (WebSocket)</a>
+                <a href="/diario" class="btn btn-warning">📋 Ver Diário</a>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card" onclick="window.location.href='/professor'">
+                <div class="feature-icon">👨‍🏫</div>
+                <h3>Tela do Professor</h3>
+                <p>Interface para o professor marcar presença dos alunos em tempo real.</p>
+                <a href="/professor">Acessar →</a>
+            </div>
+
+            <div class="feature-card" onclick="window.location.href='/coordenacao-ws'">
+                <div class="feature-icon">🔗</div>
+                <h3>Coordenação (WebSocket)</h3>
+                <p>Visualização em tempo real usando WebSocket para comunicação bidirecional.</p>
+                <a href="/coordenacao-ws">Acessar →</a>
+            </div>
+
+            <div class="feature-card" onclick="window.location.href='/coordenacao-long'">
+                <div class="feature-icon">⏱️</div>
+                <h3>Coordenação (Long Polling)</h3>
+                <p>Visualização com Long Polling - ideal para ambientes com proxy/firewall.</p>
+                <a href="/coordenacao-long">Acessar →</a>
+            </div>
+
+            <div class="feature-card" onclick="window.location.href='/coordenacao-pooling'">
+                <div class="feature-icon">🔄</div>
+                <h3>Coordenação (Pooling)</h3>
+                <p>Visualização com Pooling tradicional - requisições periódicas.</p>
+                <a href="/coordenacao-pooling">Acessar →</a>
+            </div>
+
+            <div class="feature-card" onclick="window.location.href='/aulas'">
+                <div class="feature-icon">📚</div>
+                <h3>Histórico de Aulas</h3>
+                <p>Consulte o histórico completo de aulas e frequências.</p>
+                <a href="/aulas">Acessar →</a>
+            </div>
+
+            <div class="feature-card" onclick="window.location.href='/diario'">
+                <div class="feature-icon">📊</div>
+                <h3>Dados Completos</h3>
+                <p>Visualize todos os dados do diário em formato JSON.</p>
+                <a href="/diario">Acessar →</a>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <h2>Sobre o Sistema</h2>
+            <p style="margin-bottom: 20px; color: #2c3e50;">
+                Este sistema demonstra três formas diferentes de comunicação em tempo real entre servidor e cliente:
+            </p>
+            <div class="info-grid">
+                <div class="info-item">
+                    <strong>🔗 WebSocket</strong>
+                    <p>Conexão bidirecional persistente para atualizações instantâneas com menor latência.</p>
+                </div>
+                <div class="info-item">
+                    <strong>⏱️ Long Polling</strong>
+                    <p>Requisições de longa duração mantidas vivas até haver atualizações.</p>
+                </div>
+                <div class="info-item">
+                    <strong>🔄 Pooling</strong>
+                    <p>Requisições periódicas (polling) tradicionais em intervalos fixos.</p>
+                </div>
+                <div class="info-item">
+                    <strong>📦 Arquitetura MVC</strong>
+                    <p>Código organizado em Models, Controllers, Routes e Utils.</p>
+                </div>
+                <div class="info-item">
+                    <strong>💾 Persistência</strong>
+                    <p>Dados armazenados em JSON com sincronização em tempo real.</p>
+                </div>
+                <div class="info-item">
+                    <strong>🎨 Design Responsivo</strong>
+                    <p>Interface adaptada para desktop, tablet e dispositivos móveis.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Funcionalidades Principais</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
+                <div class="card">
+                    <div class="card-header">✅ Criar Aula</div>
+                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Inicie uma nova aula para o dia atual com um clique.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">👥 Marcar Presença</div>
+                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Registre presença individual ou em massa dos alunos.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">📡 Sincronização</div>
+                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Atualização automática em tempo real para todos os clientes.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">📊 Relatórios</div>
+                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Visualize histórico completo de aulas e frequências.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">🔐 Persistência</div>
+                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Todos os dados são salvos permanentemente no servidor.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">📱 Mobile Ready</div>
+                    <p style="margin: 0; color: #7f8c8d; font-size: 14px;">Funciona perfeitamente em smartphones e tablets.</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="background-color: #ecf0f1; text-align: center; padding: 40px 30px;">
+            <h2 style="border: none; margin-bottom: 20px;">Tecnologias Utilizadas</h2>
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
+                <span class="badge">Node.js</span>
+                <span class="badge">Express</span>
+                <span class="badge">WebSocket</span>
+                <span class="badge">JavaScript</span>
+                <span class="badge">HTML5</span>
+                <span class="badge">CSS3</span>
+                <span class="badge">REST API</span>
+                <span class="badge">JSON</span>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>Registro de Frequência</strong> | Sistema de Gerenciamento de Aulas</p>
+        <p>© 2026 - Desenvolvido com ❤️ usando Node.js e Express</p>
+    </footer>
+</body>
+</html>
