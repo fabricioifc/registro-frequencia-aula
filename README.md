@@ -36,11 +36,11 @@ mkcert -install && mkcert -cert-file ./nginx/certs/cert.pem -key-file ./nginx/ce
 ## Instruções para Rodar a Aplicação com Docker (dev)
 
 ```bash
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 ## Instruções para Rodar a Aplicação com Docker (prod)
 
 ```bash
-docker-compose -f docker-compose.prod.yml up -d --build
+docker compose -f docker-compose.prod.yml up -d --build
 ```

@@ -97,8 +97,8 @@
                     } else {
                         presencasHtml = '<div class="presencas-grid">';
                         Object.entries(aula.presencas).forEach(([matricula, status]) => {
-                            const statusLabel = status === 'presente' ? '✓ Presente' : '✗ Ausente';
-                            const statusClass = status === 'presente' ? 'presente' : 'ausente';
+                            const statusLabel = status === 'Presente' ? '✓ Presente' : '✗ Ausente';
+                            const statusClass = status === 'Presente' ? 'presente' : 'ausente';
                             presencasHtml += `
                                 <div class="presenca-item ${statusClass}">
                                     ${matricula}: ${statusLabel}
