@@ -6,6 +6,7 @@ const path = require("path");
 // ========== Imports ==========
 const Diario = require("./app/models/Diario");
 const Notificador = require("./app/utils/Notificador");
+const WebSocketHandler = require("./app/utils/WebSocketHandler");
 const AulaController = require("./app/controllers/AulaController");
 const PresencaController = require("./app/controllers/PresencaController");
 const configurarRotas = require("./app/routes/routes");
@@ -23,23 +24,9 @@ app.use(express.static("public"));
 // ========== Inicializar Componentes ==========
 const diario = new Diario("diario.json");
 const notificador = new Notificador(wss);
+const webSocketHandler = new WebSocketHandler(wss, diario);
 const aulaController = new AulaController(diario, notificador);
 const presencaController = new PresencaController(diario, notificador);
-
-// ========== WebSocket Connection ==========
-wss.on("connection", ws => {
-    console.log("Cliente conectado");
-
-    ws.on("close", () => {
-        console.log("Cliente desconectado");
-    });
-
-    ws.on("error", err => {
-        console.log("Erro no WebSocket:", err.message);
-    });
-
-    ws.send(JSON.stringify(diario.obterDados()));
-});
 
 // ========== Configurar Rotas ==========
 const rotas = configurarRotas(app, aulaController, presencaController, notificador);
