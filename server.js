@@ -47,5 +47,5 @@ app.use(rotas);
 
 // ========== Iniciar Servidor ==========
 server.listen(PORT, () => {
-    console.log(`\n🚀 Servidor rodando na porta ${PORT}`);
+    console.log(`\n Servidor rodando na porta ${PORT}`);
 });
