@@ -70,7 +70,8 @@
                 return;
             }
 
-            socket = new WebSocket("ws://localhost:3000");
+            const wsProtocol = location.protocol === "https:" ? "wss:" : "ws:";
+            socket = new WebSocket(`${wsProtocol}//${location.host}`);
 
             socket.addEventListener("open", () => {
                 atualizarStatus(true, "Conectado");
