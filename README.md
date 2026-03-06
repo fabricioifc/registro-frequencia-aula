@@ -25,3 +25,22 @@ A aplicação deve permitir:
 - Visualizar as presenças atualizadas em tempo real de três maneiras diferentes (Polling, Long Polling e WebSocket)
 
 > Use o projeto fornecido como base para implementar as funcionalidades. O foco é entender as diferenças entre as abordagens de atualização de dados em tempo real e como elas afetam a experiência do usuário.
+
+## Gerando os Certificados SSL (localmente)
+
+```bash
+mkdir -p ./nginx/certs
+mkcert -install && mkcert -cert-file ./nginx/certs/cert.pem -key-file ./nginx/certs/key.pem localhost 127.0.0.1 chamada.local
+```
+
+## Instruções para Rodar a Aplicação com Docker (dev)
+
+```bash
+docker-compose up -d --build
+```
+
+## Instruções para Rodar a Aplicação com Docker (prod)
+
+```bash
+docker-compose -f docker-compose.prod.yml up -d --build
+```
