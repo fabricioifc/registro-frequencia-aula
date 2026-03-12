@@ -1,18 +1,22 @@
+# Usa versão LTS do Node
 FROM node:25-alpine
 
+# Define diretório de trabalho
 WORKDIR /app
 
-# Copiar arquivos de dependência
+# Copia arquivos de dependência
 COPY package*.json ./
 
-# Instalar dependências
-RUN npm install
+# Instala dependências
+# npm ci é mais rápido e confiável porque usa o package-lock.json
+RUN npm ci
 
-# Copiar código da aplicação
+# Copia restante da aplicação
 COPY . .
 
-# Expor porta
+# Documenta a porta usada
 EXPOSE 3000
 
-# Comando para desenvolvimento (nodemon)
+# Comando para iniciar em modo desenvolvimento
+# geralmente usando nodemon
 CMD ["npm", "run", "dev"]

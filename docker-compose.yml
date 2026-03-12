@@ -4,16 +4,30 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     container_name: registro-frequencia-dev
+
+    # Mapeia a porta da aplicação. 
     ports:
       - "3000:3000"
+
+    # Monta o código do host no container
     volumes:
       - .:/app
+
+      # Mantém node_modules dentro do container.
+      # evitando conflito com node_modules do host
+      # Modo de desenvolvimento, não recomendado para produção
       - /app/node_modules
-    environment:
-      - NODE_ENV=development
-      - PORT=3000
+
+    # environment:
+    #   - NODE_ENV=development
+    #   - PORT=3000
+    env_file:
+      - .env
+
     networks:
       - dev-network
+
+    # Reinicia automaticamente caso pare
     restart: unless-stopped
 
 networks:
