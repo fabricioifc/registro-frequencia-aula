@@ -4,8 +4,9 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     container_name: registro-frequencia-dev
-    ports:
-      - "3000:3000" # externa:interna
+    # vamos usar nginx para servir a aplicação, então não precisamos expor a porta do app diretamente
+    # ports:
+    #   - "3000:3000" # externa:interna
     volumes:
       - .:/app
       - /app/node_modules # somente modo dev
