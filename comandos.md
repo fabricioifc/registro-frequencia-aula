@@ -24,3 +24,29 @@ docker rm chamadas-dev-container
 
 # copiar um arquivo do container para o host
 docker cp chamadas-dev-container:/app/diario.json ./diario.json.bkp
+
+# Limpeza geral (cuidado)
+
+docker system prune -a
+
+## Docker Compose
+
+# 1. Rodar os serviços
+
+```bash
+docker compose up -d
+## ou --build para forçar o rebuild da imagem (Dockerfile.dev)
+docker compose -f docker-compose.yml up -d --build
+```
+
+# 2. Parar os serviços
+
+```bash
+docker compose down
+```
+
+# 3. Verificar os logs
+
+```bash
+docker compose logs -f
+```
