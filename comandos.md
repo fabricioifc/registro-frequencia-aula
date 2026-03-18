@@ -50,3 +50,12 @@ docker compose down
 ```bash
 docker compose logs -f
 ```
+
+## Comandos NGINX
+
+```bash
+# Verificar a configuração do NGINX
+docker compose exec nginx nginx -t
+# Reiniciar o NGINX
+docker compose exec nginx nginx -s reload
+```

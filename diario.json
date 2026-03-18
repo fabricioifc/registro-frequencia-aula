@@ -139,6 +139,15 @@
         "1": "Presente",
         "2": "Presente"
       }
+    },
+    {
+      "data": "2026-03-18",
+      "presencas": {
+        "1": "Ausente",
+        "2": "Ausente",
+        "3": "Ausente",
+        "4": "Presente"
+      }
     }
   ]
 }
