@@ -59,3 +59,23 @@ docker compose exec nginx nginx -t
 # Reiniciar o NGINX
 docker compose exec nginx nginx -s reload
 ```
+
+## Comandos Extras
+
+Instalar biblioteca em modo `dev`:
+
+```bash
+npm install nodemon -D
+```
+
+## Rodar o servidor em modo `prod` com Docker
+
+# 1. Build da imagem:
+docker build -t chamadas-prod -f Dockerfile.prod .
+
+# 2. Rodar o container:
+docker run -d \
+    -p 3000:3000 \
+    -v $(pwd):/app \
+    --name chamadas-prod-container \
+    chamadas-prod
