@@ -24,8 +24,6 @@ services:
     depends_on:
       - app
 
-
-  # docker compose -f docker-compose.prod.yml up
     networks:
       - prod-network
     restart: unless-stopped
