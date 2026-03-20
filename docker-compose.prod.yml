@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
-    container_name: rd-app-prod
+    container_name: rf-app-prod
     environment:
       - NODE_ENV=production
       - PORT=3000
@@ -24,7 +24,8 @@ services:
     depends_on:
       - app
 
-      
+
+  # docker compose -f docker-compose.prod.yml up
     networks:
       - prod-network
     restart: unless-stopped
