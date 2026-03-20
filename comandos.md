@@ -79,3 +79,10 @@ docker run -d \
     -v $(pwd):/app \
     --name chamadas-prod-container \
     chamadas-prod
+
+## Certificado SSL
+
+```bash
+# Gerar certificado autoassinado
+
+```
