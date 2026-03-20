@@ -84,5 +84,14 @@ docker run -d \
 
 ```bash
 # Gerar certificado autoassinado
-
+openssl req -x509 -nodes -days 365 \
+  -newkey rsa:2048 \
+  -keyout nginx/certs/key.pem \
+  -out nginx/certs/cert.pem \
+  -subj "/CN=localhost"
 ```
+
+## Rodar em modo produção com Docker Compose
+
+```bash
+docker compose -f docker-compose.prod.yml up -d --build
