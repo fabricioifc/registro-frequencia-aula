@@ -1,5 +1,5 @@
 services:
-  app:
+  app: &app_base
     build:
       context: .
       dockerfile: Dockerfile.prod
@@ -19,6 +19,12 @@ services:
       retries: 3
       start_period: 5s
 
+  app_backup:
+    <<: *app_base
+    container_name: registro-frequencia-app-backup
+    ports:
+      - "3001:3000"
+
   nginx:
     image: nginx:alpine
     container_name: registro-frequencia-nginx
@@ -28,6 +34,7 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/certs:/etc/nginx/certs:ro
+      - ./nginx/pages:/usr/share/nginx/html:ro
     depends_on:
       - app
     networks:
