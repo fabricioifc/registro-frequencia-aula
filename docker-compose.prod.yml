@@ -3,28 +3,28 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
-    container_name: registro-frequencia-prod
+    container_name: rd-app-prod
     environment:
       - NODE_ENV=production
       - PORT=3000
-
     networks:
       - prod-network
-    restart: always # Reinicia o container automaticamente em caso de falha
+    restart: always
 
 
   nginx:
     image: nginx:latest
-    container_name: registro-frequencia-nginx-prod
+    container_name: rf-nginx-prod
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/nginx.prod.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/nginx.prod.conf:/etc/nginx/conf.d/default.conf:ro
       - ./nginx/certs:/etc/nginx/certs
-
     depends_on:
       - app
+
+      
     networks:
       - prod-network
     restart: unless-stopped
